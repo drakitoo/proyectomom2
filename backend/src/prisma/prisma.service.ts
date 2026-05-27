@@ -16,7 +16,13 @@ export class PrismaService extends PrismaClient implements OnModuleDestroy, OnMo
     }
 
     async onModuleInit() {
-        await this.$connect();
+        try {
+            await this.$connect();
+            console.log('✅ Conexión a PostgreSQL exitosa');
+        } catch (error) {
+            console.error('❌ Error conectando a PostgreSQL:', error);
+            throw error;
+        }
     }
     async onModuleDestroy() {
         await this.$disconnect();

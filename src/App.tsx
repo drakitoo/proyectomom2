@@ -5,16 +5,19 @@ import Actividades from "./pages/Actividades.jsx";
 import Estadisticas from "./pages/Estadisticas.jsx";
 import "./App.css";
 
-
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/actividades" element={<Actividades />} />
-        <Route path="/estadisticas" element={<Estadisticas />} />
-      </Routes>
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+        <Navbar />
+        <div className="content-wrapper">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/actividades" element={<Actividades />} />
+            <Route path="/estadisticas" element={<Estadisticas />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 }

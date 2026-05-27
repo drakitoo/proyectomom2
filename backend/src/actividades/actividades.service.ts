@@ -5,24 +5,24 @@ import { PrismaService } from '../prisma/prisma.service';
 export class ActividadesService {
   constructor(private prisma: PrismaService) {}
 
-  findAll() {
+  async findAll() {
     return this.prisma.tarea.findMany();
   }
 
-  create(data: { nombre: string; prioridad: string }) {
+  async create(data: { nombre: string; prioridad: string }) {
     return this.prisma.tarea.create({
       data: { ...data, completado: false },
     });
   }
 
-  completar(id: number) {
+  async completar(id: number) {
     return this.prisma.tarea.update({
       where: { id },
       data: { completado: true },
     });
   }
 
-  eliminar(id: number) {
+  async eliminar(id: number) {
     return this.prisma.tarea.delete({ where: { id } });
   }
 }
